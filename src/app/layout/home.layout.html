@@ -1,0 +1,38 @@
+<div class="container" [class.is-mobile]="mobileQuery.matches">
+
+    <mat-toolbar color="primary" class="toolbar">
+        <button mat-icon-button class="menuIcon" (click)="snav.toggle()" title="Docs menu">
+            <mat-icon>menu</mat-icon>
+        </button>
+        <h1 class="app-name">EDS App</h1>
+        <div>
+            <div class="search-box-container">
+                <input placeholder="Select member" type="search" aria-label="search" (keyup)="applyFilter($event.target.value)" [formControl]="studentAutoComplete"
+                    [matAutocomplete]="auto">
+            </div>
+            <mat-autocomplete #auto="matAutocomplete">
+                <mat-option *ngFor="let option of options" [value]="option.name" (onSelectionChange)="onSelectStudent($event,option.Id)">{{option.name}}</mat-option>
+            </mat-autocomplete>
+        </div>
+        <button mat-button (click)="onLogout()" *ngIf="!mobileQuery.matches">Logout</button>
+    </mat-toolbar>
+
+
+    <mat-sidenav-container class="sidenav-container">
+        <mat-sidenav #snav [opened]="!mobileQuery.matches" class="sidenav" [mode]="mobileQuery.matches ? 'over' : 'side'" [fixedInViewport]="mobileQuery.matches"
+            fixedTopGap="56">
+            <mat-nav-list>
+                <a mat-list-item routerLink="/members">Members</a>
+                <a mat-list-item routerLink="/members/student">Student</a>
+                <a mat-list-item routerLink="/members/tests">tests</a>
+                <button class="btn-logout" mat-button (click)="onLogout()" *ngIf="mobileQuery.matches">
+                    <a>Logout</a>
+                </button>
+            </mat-nav-list>
+        </mat-sidenav>
+
+        <mat-sidenav-content style="padding: 30px;" class="sidenav-content">
+            <router-outlet></router-outlet>
+        </mat-sidenav-content>
+    </mat-sidenav-container>
+</div>

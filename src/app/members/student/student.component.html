@@ -1,0 +1,9 @@
+<p *ngIf="studentDetails!=null;else error_message">
+  Student Id: {{studentDetails.Id}}
+  <br /> Student DOB: {{studentDetails.dob}}
+</p>
+
+
+<ng-template #error_message>
+  {{message}}
+</ng-template>

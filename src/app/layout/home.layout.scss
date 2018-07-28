@@ -1,0 +1,109 @@
+@import '../../_mixin.scss';
+
+$darkgray:#333;
+$offwhite:#fafafa;
+$showMenuIconShownMargin: 0 8px 0 0;
+$hideMenuIconHiddenMargin: 0 16px 0 -88px;
+
+
+.container {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.sidenav-container {
+  flex: 1;
+
+  .sidenav {
+    position: fixed;
+    top: 64px;
+    bottom: 0;
+    left: 0;
+    padding: 0;
+    min-width: 180px;
+    background-color: #fafafa;
+    box-shadow: 6px 0 6px rgba(0,0,0,.1);
+  }
+}
+
+
+.menuIcon
+{
+      width: 72px;
+      margin: $hideMenuIconHiddenMargin;
+}
+
+.is-mobile 
+{
+  .toolbar {
+      position: fixed;
+      /* Make sure the toolbar will stay on top of the content as it scrolls past. */
+      z-index: 2;
+    }
+    .sidenav-container {
+      /* When the sidenav is fixed, don't constrain the height of the sidenav container. This allows the
+         `<body>` to be our scrolling element for mobile layouts. */
+      flex: 1 0 auto;
+    }
+    .app-name
+    {
+      display: none;
+    }
+    .btn-logout
+    {
+      color: blue;
+    }
+    .sidenav-content
+    {
+      top:56px;
+    }
+    .menuIcon
+    {
+      width: 40px;
+      margin: $showMenuIconShownMargin
+    }
+}
+ 
+h1.app-name {
+  margin-left: 8px;
+}
+
+    
+// SEARCH BOX.
+.search-box-container {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  width: 100%;
+  min-width: 150px;
+  height: 100%;
+
+  input {
+    color: $darkgray;
+    border: none;
+    border-radius: 100px;
+    background-color: $offwhite;
+    padding: 5px 16px;
+    margin-left: 8px;
+    width: 150px;
+    height: 50%;
+    -webkit-appearance: none;
+
+    &:focus {
+      outline: none;
+      transition: width 0.4s ease-in-out;
+      &:focus {
+        width: 200px;
+      }
+    }
+ 
+    @media (max-width: 480px) {
+      width: 150px;
+    }
+  }
+}
