@@ -5,6 +5,8 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 ## Node modules installation
 
 Run `npm install` to install dependent node module on local machcine. 
+
+Extra line added.
  
 ## Build
 
